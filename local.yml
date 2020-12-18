@@ -17,7 +17,7 @@
       - openssh
       - vlc
       - python-pip
-      - python-pywal
+        #- python-pywal
       - w3m
       - ranger
       - cmatrix
