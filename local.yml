@@ -5,6 +5,25 @@
 
 
   tasks:
-  - name: install htop
+  - name: install packages
     package: 
-      name: htop
+      name: 
+      - htop
+      - tmux
+      - vim-common
+      - git
+      - stow
+      - nmap
+      - openssh
+      - vlc
+      - python-pip
+      - python-pywal
+      - w3m
+      - ranger
+      - cmatrix
+      - npm
+      - feh
+      - compton
+      - alacritty
+      - kitty
+
