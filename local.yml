@@ -5,6 +5,8 @@
 
 
   tasks:
+###--- {{{ Install all the packages
+#
   - name: install packages
     package: 
       name: 
@@ -17,16 +19,20 @@
       - openssh
       - vlc
       - python-pip
-        #- python-pywal
+#      - python-pywal
       - w3m
       - ranger
       - cmatrix
       - npm
       - feh
       - compton
+      - python3-psutil
       - alacritty
       - kitty
       - dconf-cli
+#
+#
+#}}}
 
 
 ###--- {{{ Set Wallpaper Section ---### 
@@ -49,6 +55,49 @@
 #    dconf:
 #      key: "/org/gnome/desktop/background/picture-options"
 #      value: "'zoom'"
+#
+#
+#}}}
+
+###--- {{{ Dotfiles loaded and installed
+#
+#  - name: copy .bash_profile file
+#    copy:
+#      src: files/bash_profile
+#      dest: /home/deez79/.bash_profile
+#      owner: deez79
+#      group: deez79
+#
+#  - name: copy .bashrc file
+#    copy:
+#      src: files/bashrc
+#      dest: /home/deez79/.bashrc
+#      owner: deez79
+#      group: deez79
+#
+#}}}
+
+###--- {{{ Set up System User to run ansible-pull in background
+#
+#  - name: add ansible user
+#    user: 
+#      name: velociraptor
+#      system: yes
+#
+#  - name: set up sudo for ansible user
+#    copy:
+#      src: files/sudoer_velociraptor
+#      dest: /etc/sudoers.d/velociraptor
+#      owner: root
+#      group: root
+#      mode: 0440
+#
+#  - name: add ansible-pull cron job
+#    cron:
+#      name: ansible auto-provision
+#      user: velcoiraptor
+#      minute: "*/10"
+#      job: ansible-pull -o -U https://github.com/deez79/ansible_desktops.git
 #
 #
 #}}}
